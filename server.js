@@ -16,7 +16,10 @@ const bootcamps = require("./routes/bootcamps");
 // Initialize Express
 const app = express();
 
-//body parser
+// Ensure extended query parsing (uses 'qs' library under the hood)
+app.set("query parser", "extended");
+
+// Body parser (for req.body)
 app.use(express.json());
 
 if (process.env.NODE_ENV === "development") {
