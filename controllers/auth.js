@@ -60,7 +60,7 @@ const sendTokenResponse = async (user, statusCode, res) => {
   };
 
   if (process.env.NODE_ENV === "production") {
-    options.secure = true;  
+    options.secure = true;
   }
 
   res
@@ -68,3 +68,11 @@ const sendTokenResponse = async (user, statusCode, res) => {
     .cookie("token", token, options)
     .json({ success: true, token });
 };
+
+// @desc   Get Currrent logged in user
+// @route  POST /api/v1/auth/me
+// @access private
+exports.getMe = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  res.status(200).json({ success: true, data: user });
+});
