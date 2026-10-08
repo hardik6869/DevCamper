@@ -9,10 +9,10 @@ const {
 } = require("../controllers/courses");
 
 const Course = require("../models/Course");
-const advancedResult = require("../middleware/advancedResult");
 
 const { protect, authorize } = require("../middleware/auth");
 
+const advancedResult = require("../middleware/advancedResult");
 const router = express.Router({ mergeParams: true });
 
 router
