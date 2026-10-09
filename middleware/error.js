@@ -4,8 +4,9 @@ const errorHandler = (err, req, res, next) => {
   let error = { ...err };
   error.message = err.message;
 
+  // Mongpoose bad ObjectId
   if (err.name === "CastError") {
-    const message = `Resource not found with id of ${err.value}`;
+    const message = `Resource not found`;
     error = new ErrorResponse(message, 404);
   }
 
